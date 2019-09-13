@@ -10,17 +10,17 @@ import featureselectionwraper.FeatureSelection;
  */
 
 public class Principal {
-    static final double ALFA = 0.5; //inercia
-    static final double BETA = 2.05; //memoria
-    static final double GAMA = 2.05; //cooperacao
+    static final double ALFA = 1; //inercia
+    static final double BETA = 1.2; //memoria
+    static final double GAMA = 1.4; //cooperacao
     static final double VMAX = 6; //velocidade maxima
     static final boolean VELCONTROL = true; //se controla ou nao a velocidade
     
-    static final int QTDPARTICULAS = 100;
-    static final int QTDITERACOES = 500;
+    static final int QTDPARTICULAS = 30;
+    static final int QTDITERACOES = 100;
 
     static final BaseDeDados BASE = BaseDeDados.KEYSTROKE;
-    static final String MODELO = "naive";
+    static final String MODELO = "knn";
 
     public static void main(String[] args) {
         Nuvem nuvemParticulas = new Nuvem(QTDPARTICULAS);
@@ -29,6 +29,7 @@ public class Principal {
         FeatureSelection fs = new FeatureSelection(BASE.NOMEBASE, MODELO);
         fs.removerAtributos(selecionados, true, "PSO");
         System.out.println("------PROCESSO CONCLUIDO------");
+        System.out.println("::MODELO: " + MODELO+"::");
     }
 
 }

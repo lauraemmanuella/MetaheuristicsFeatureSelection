@@ -7,6 +7,7 @@ import java.util.*;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;
 import weka.core.converters.ArffSaver;
+import weka.core.converters.CSVSaver;
 
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
@@ -54,10 +55,18 @@ public class FeatureSelection {
             if (fim) {
                 ArffSaver saver = new ArffSaver();
                 saver.setInstances(dadosReduzidos);
-                saver.setFile(new File("./basesreduzidas/" + nomeMetah + "/" + nomeBase
-                        + "/selecionados" + nomeClassificador
+                saver.setFile(new File("./basesreduzidas/" + nomeMetah + "/" + 
+                        nomeBase +"/arff/"+nomeClassificador+"/selecionados" + nomeClassificador
                         + System.currentTimeMillis() + ".arff"));
                 saver.writeBatch();
+                
+                //Salva em csv
+                CSVSaver csvsaver= new CSVSaver();
+                csvsaver.setInstances(dadosReduzidos);
+                csvsaver.setFile(new File("./basesreduzidas/" + nomeMetah + "/" + 
+                        nomeBase +"/csv/"+nomeClassificador+"/selecionados" + nomeClassificador
+                        + System.currentTimeMillis() + ".csv"));
+                csvsaver.writeBatch();
             }
 
         } catch (Exception e) {
