@@ -23,13 +23,29 @@ public class Principal {
     static final String MODELO = "knn";
 
     public static void main(String[] args) {
-        Nuvem nuvemParticulas = new Nuvem(QTDPARTICULAS);
-        nuvemParticulas.executarPSO();
-        ArrayList<Integer> selecionados = nuvemParticulas.getMelhorSolucaoNuvem();
-        FeatureSelection fs = new FeatureSelection(BASE.NOMEBASE, MODELO);
-        fs.removerAtributos(selecionados, true, "PSO");
-        System.out.println("------PROCESSO CONCLUIDO------");
-        System.out.println("::MODELO: " + MODELO+"::");
+        int cont30x = 0;
+        util.Time tempoMetah = new util.Time();
+        do{
+            Nuvem nuvemParticulas = new Nuvem(QTDPARTICULAS);
+            nuvemParticulas.executarPSO();
+            ArrayList<Integer> selecionados = nuvemParticulas.getMelhorSolucaoNuvem();
+            FeatureSelection fs = new FeatureSelection(BASE.NOMEBASE, MODELO);
+            fs.removerAtributos(selecionados, true, "PSO");
+            
+            cont30x++;
+            
+            System.out.println("------PROCESSO CONCLUIDO  "+ cont30x + "  ------");
+            
+            
+        }while(cont30x <= 30);
+        
+        System.out.println("Modelo: " + MODELO+"");
+        System.out.println("Duracao: "+ tempoMetah);
+        Runtime rt = Runtime.getRuntime();
+        System.out.println("Uso de memória  = " +(rt.totalMemory()-rt.freeMemory())/(1000*1000)+"M");
+        System.out.println("------------------------------");
+        
+       
     }
 
 }
