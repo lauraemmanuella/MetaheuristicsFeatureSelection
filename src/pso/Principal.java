@@ -20,7 +20,7 @@ public class Principal {
     static final int QTDITERACOES = 100;
 
     static final BaseDeDados BASE = BaseDeDados.KEYSTROKE;
-    static final String MODELO = "knn";
+    static final String MODELO = "svm";
 
     public static void main(String[] args) {
         int cont30x = 0;
