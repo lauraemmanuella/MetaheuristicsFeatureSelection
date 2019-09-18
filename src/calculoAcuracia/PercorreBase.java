@@ -66,8 +66,8 @@ public class PercorreBase  {
                 
 
 
-                //System.out.println(qtdAtributos);//imprime a quantidade de atributos
-                System.out.println(valoracuracia.replace(".", ",")); //imprime a acuracia das bases
+                System.out.println(qtdAtributos);//imprime a quantidade de atributos
+                //System.out.println("::: ACURACIA :::\n"+valoracuracia.replace(".", ",")); //imprime a acuracia das bases
                 //System.out.println(arquivos[i].getName() + "\t>> " +valoracuracia  + " | Quantidade de Atributos Removidos >> "+ qtdAtributos);//imprime tudo
             }   
         } catch (Exception e) {

@@ -8,6 +8,7 @@ import weka.classifiers.evaluation.Evaluation;
 import weka.classifiers.functions.SMO;
 import weka.classifiers.functions.supportVector.Puk;
 import weka.classifiers.lazy.IBk;
+import weka.classifiers.trees.RandomForest;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;
 
@@ -27,6 +28,7 @@ public class Modelos {
         nb.setUseKernelEstimator(true);
 
         IBk knn = new IBk(1);
+        RandomForest rf = new RandomForest();
 
         switch (classificador) {
             case "knn":
@@ -35,6 +37,8 @@ public class Modelos {
                 return nb;
             case "svm":
                 return svm;
+            case "rf":
+                return rf;
             default:
                 System.out.println("CLASSIFICADOR NAO ENCONTRADO. "
                         + "VERIFIQUE SE O NOME ESTA CORRETO. KNN SERA CARREGADO");

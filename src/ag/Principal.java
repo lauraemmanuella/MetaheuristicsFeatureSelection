@@ -19,14 +19,26 @@ public class Principal {
     static final int NUMMAXGERACOES = 500;
 
     static final BaseDeDados BASE = BaseDeDados.KEYSTROKE;
-    static final String MODELO = "naive";
+    static final String MODELO = "rf";
 
      public static void main(String[] args) {
-        Genetico ag = new Genetico();
-        ag.executarAG();
-        FeatureSelection fs = new FeatureSelection(Principal.BASE.NOMEBASE, Principal.MODELO);
-        fs.removerAtributos(ag.getMelhor().getAtributos(), true, "AG");
-        System.out.println("------PROCESSO CONCLUIDO------");
+         int cont30x = 0;
+         util.Time tempoMetah = new util.Time();
+        do{          
+            Genetico ag = new Genetico();
+            ag.executarAG();
+            FeatureSelection fs = new FeatureSelection(Principal.BASE.NOMEBASE, Principal.MODELO);
+            fs.removerAtributos(ag.getMelhor().getAtributos(), true, "AG");
+            
+            cont30x++;
+            System.out.println("------PROCESSO CONCLUIDO  "+ cont30x + "  ------");
+        } while (cont30x <= 30);
+        System.out.println("Modelo: " + MODELO+"");
+        System.out.println("Duracao: "+ tempoMetah);
+        Runtime rt = Runtime.getRuntime();
+        System.out.println("Uso de memória  = " +(rt.totalMemory()-rt.freeMemory())/(1000*1000)+"M");
+        System.out.println("------------------------------");
+        
     }
      
 }
